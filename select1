@@ -1,0 +1,2 @@
+--원하는 열들의 이름만 선택해서 겨로가 보기
+SELECT employ_id, first_name, last_name FROM employees;
