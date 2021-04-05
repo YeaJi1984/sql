@@ -1,0 +1,30 @@
+Select employee_id, first_name, last_name
+From employees;
+--*은 모든 열 모든 데이터를 조회
+--명령어는 대문자 나머지는 소문자로 작성 권장
+
+Select employee_id, first_name, last_name
+From employees;
+
+select distinct job_id
+from employees
+
+select employee_id as 사원번호, first_name as 이름, last_name as 성
+from employees;
+
+select employee_id, salary, 
+       salary+500, 
+       salary-100, 
+       (salary *1.1)/2,
+first_name||' '||last_name, email||'@'||'company.com'
+from employees;
+
+select * 
+from employees
+where employee_id =100;
+--id가 100인 사람의 정보만 출력
+
+Select *
+from employees
+where first_name ='David';
+--first_name에서 David만 출력
