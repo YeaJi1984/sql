@@ -1,2 +1,48 @@
-select salary,salary/30, round(salary/30, 0), round(salary/30,1), round(salary/30, -1)
+select salary,
+       salary/30, 
+       round(salary/30, 0), round(salary/30,1), round(salary/30, -1)
 from employees;
+       
+select salary,
+       salary/30, 
+       trunc(salary/30, 0), 
+       trunc(salary/30,1), 
+       trunc(salary/30, -1)
+from employees;
+
+select to_char(sysdate, 'yy/mm/dd/hh24:MI'),
+       sysdate +1, 
+       sysdate -1,
+       to_date('20170102')-to_date('20170101'),
+       sysdate + 13/24
+From dual;
+
+select sysdate, hire_date, months_between(sysdate,hire_date)
+from employees
+where department_id =100;
+
+select hire_date,
+       add_months(hire_date,3),
+       add_months(hire_date,-3)
+from employees
+where department_id between 100 and 106;
+
+select hire_date, next_day(hire_date, '금요일') as 적용결과_문자,
+       next_day(hire_date,6) as 적용결과_숫자 
+from employees
+where department_id between 100 and 106
+
+
+SELECT FIRST_NAME, LAST_NAME, DEPARTMENT_ID, SALARY, DECODE(DEPARTMENT_ID, 60, SALARY*1.1, SALARY) 조정된급여,
+DECODE(DEPARTMENT_ID, 60, '10인상', '미인상') 인상여부
+FROM EMPLOYEES;
+
+SELECT EMPLOYEE_ID, FIRST_NAME, LAST_NAME, SALARY,
+    CASE
+        WHEN SALARY >=9000 THEN '상위급여'
+        WHEN SALARY BETWEEN 6000 AND 8999 THEN '중위급여'
+        ELSE '하위급여'
+    END AS 급여등급
+FROM EMPLOYEES
+WHERE JOB_ID = 'IT_PROG';
+
